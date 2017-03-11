@@ -560,8 +560,6 @@ var _routes2 = _interopRequireDefault(_routes);
 
 var _reactRouterRedux = __webpack_require__(2);
 
-var _reactRouterRedux2 = _interopRequireDefault(_reactRouterRedux);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -599,9 +597,8 @@ var HTML = function HTML(_ref) {
 
 app.use(function (req, res) {
     var memoryHistory = (0, _reactRouter.createMemoryHistory)(req.url);
-    console.log(memoryHistory);
     var store = (0, _store.configureStore)(memoryHistory);
-    var history = (0, _reactRouterRedux2.default)(memoryHistory, store);
+    var history = (0, _reactRouterRedux.syncHistoryWithStore)(memoryHistory, store);
 
     (0, _reactRouter.match)({ history: history, routes: _routes2.default, location: req.url }, function (error, redirectLocation, renderProps) {
         if (error) {

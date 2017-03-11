@@ -16,7 +16,7 @@ import {createMemoryHistory, match, RouterContext} from 'react-router'
 import {configureStore} from './src/store'
 import {Provider} from 'react-redux'
 import routes from './src/routes'
-import syncHistoryWithStore from 'react-router-redux'
+import {syncHistoryWithStore} from 'react-router-redux'
 
 const app = express()
 
@@ -43,7 +43,6 @@ const HTML = ({content, store}) => (
 
 app.use(function (req, res) {
     const memoryHistory = createMemoryHistory(req.url)
-    console.log(memoryHistory)
     const store = configureStore(memoryHistory)
     const history = syncHistoryWithStore(memoryHistory, store)
 
